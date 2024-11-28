@@ -14,7 +14,7 @@ services:
 
   db:
     image: postgres
-    restart: always
+    restart: on-failure
     user: postgres
     secrets:
       - db-password
@@ -33,7 +33,7 @@ services:
 
   redis:
     image: redis
-    restart: always
+    restart: on-failure
     expose:
       - 6379
     volumes:
