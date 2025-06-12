@@ -1,1 +1,1 @@
-Generic single-database configuration with an async dbapi.
+Alembic migrations live in this directory to track database schema changes. Apply them with 'alembic upgrade head'.
