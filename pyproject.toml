@@ -23,4 +23,5 @@ dependencies = [
 [tool.uv]
 dev-dependencies = [
     "ruff>=0.7.1",
+    "pytest>=8.0.0",
 ]
