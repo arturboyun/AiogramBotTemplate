@@ -34,12 +34,14 @@ class Service(Generic[TModel]):
 
         logger.debug(f"Building query for {self.model.__name__}")
 
-        if options is None:
-            options = tuple(self.options) if self.options else ()
-        elif not isinstance(options, (Iterable, Sequence)):
-            options = (options,)
+        if options is True:
+            options = self.options
 
-        stmt = stmt.options(*options)
+        if options is not None:
+            if isinstance(options, Iterable) and not isinstance(options, ExecutableOption):
+                stmt = stmt.options(*options)
+            else:
+                stmt = stmt.options(options)
 
         if filters:
             stmt = stmt.filter(*filters)
